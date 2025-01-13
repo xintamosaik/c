@@ -21,6 +21,20 @@ int main() {
   printf("%lu\n", sizeof(percent));
   printf("%lu\n", sizeof(firstLetter));
 
+
+  FILE *testfile;
+  // Open a file in read mode
+  testfile = fopen("filename.txt", "r");
+  // Store the content of the file
+  char fileContent[100];
+  // Read the content and store it inside myString
+  fgets(fileContent, 100, testfile);
+  fclose(testfile);
+  printf("\n%s", fileContent);
+  testfile = fopen("filename.txt", "w");
+  // Write some text to the file
+  fprintf(testfile, fileContent);
+  fclose(testfile);
   return 0;
 }
 
