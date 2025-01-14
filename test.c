@@ -4,11 +4,19 @@ int basics();
 int structures();
 int files();
 
+enum DebugLevel {
+    NONE,
+    NORMAL,
+    ALL
+};
+
+enum DebugLevel debugLevel = ALL;
 /**
  * main
  */
 int main()
 {
+  
 
   const int errorCodeBasics = basics();
   if (errorCodeBasics != 0)
@@ -19,7 +27,10 @@ int main()
 
   if (errorCodeBasics == 0)
   {
-    printf("Basics were handled well.\n");
+    if (debugLevel) printf("Basics were handled well.\n");  
+
+    
+    
   }
 
   const int errorCodesStructures = structures();
@@ -31,7 +42,7 @@ int main()
 
   if (errorCodesStructures == 0)
   {
-    printf("Structures were handled well.\n");
+    if (debugLevel) printf("Structures were handled well.\n");
   }
 
   const int errorCodeFiles = files();
@@ -43,14 +54,14 @@ int main()
 
   if (errorCodeFiles == 0)
   {
-    printf("Files were handled well.\n");
+    if (debugLevel) printf("Files were handled well.\n");
   }
 
   return 0;
 }
 
 int basics()
-{
+{ 
   printf("hi\n"); // \n for newline
 
   const int number = 42;
@@ -96,6 +107,7 @@ int structures()
   strcpy(mine.first, "Ulf");
   strcpy(mine.last, "Dellbruegge");
   printf("My name is %s %s.\n", mine.first, mine.last);
+  
 
   return 0;
 }
